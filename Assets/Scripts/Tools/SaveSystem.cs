@@ -23,7 +23,7 @@ public class SaveSystem
     static public void Save(Score scoreData)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/PetitesZailes.save";
+        string path = Application.persistentDataPath + "/PenguinSlide.save";
 
         FileStream stream = new FileStream(path, FileMode.Create);
 
@@ -33,7 +33,7 @@ public class SaveSystem
 
     static public Score Load()
     {
-        string path = Application.persistentDataPath + "/PetitesZailes.save";
+        string path = Application.persistentDataPath + "/PenguinSlide.save";
 
         if (File.Exists(path))
         {
