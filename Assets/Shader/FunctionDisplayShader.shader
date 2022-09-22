@@ -14,10 +14,12 @@
             Blend SrcAlpha OneMinusSrcAlpha
 
             CGPROGRAM
+// Upgrade NOTE: excluded shader from DX11, OpenGL ES 2.0 because it uses unsized arrays
+#pragma exclude_renderers d3d11 gles
             #pragma vertex vert
             #pragma fragment frag
             // make fog work
-            #pragma multi_compile_fog         
+            // #pragma multi_compile_fog         
 
             #include "UnityCG.cginc"
 
@@ -30,15 +32,14 @@
             struct v2f
             {
                 float2 uv : TEXCOORD0;
-                UNITY_FOG_COORDS(1)
+                // UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
             };
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
 
-
-            float _DataArray[1023];
+            float _DataArray[1022];
             int valueToRead;
 
             float completion;
@@ -50,7 +51,7 @@
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                UNITY_TRANSFER_FOG(o,o.vertex);
+                // UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
             }
 
@@ -76,7 +77,7 @@
                 fixed4 col = lerp(float4(0,0,0,0), float4(dist, dist, dist, 1 - dist + 0.5f), smoothstep(i.uv.y - 0.0005f, i.uv.y + 0.0005f, yValue + 0.5f));
 
                 // apply fog
-                UNITY_APPLY_FOG(i.fogCoord, col);
+                // UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
             }
             ENDCG

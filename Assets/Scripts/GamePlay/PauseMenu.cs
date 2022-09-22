@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
   public static bool GameIsPaused = false;
 
   public GameObject pauseMenuUI;
+  public ScoreCalculator scoreCalculator;
 
   void Start()
   {
@@ -35,6 +36,7 @@ public class PauseMenu : MonoBehaviour
     pauseMenuUI.SetActive(false);
     Time.timeScale = 1f;
     GameIsPaused = false;
+    scoreCalculator.isCalculating = true;
   }
 
   public void Pause()
@@ -42,6 +44,7 @@ public class PauseMenu : MonoBehaviour
     pauseMenuUI.SetActive(true);
     Time.timeScale = 0f;
     GameIsPaused = true;
+    scoreCalculator.isCalculating = false;
   }
 
   public void LoadMenu()

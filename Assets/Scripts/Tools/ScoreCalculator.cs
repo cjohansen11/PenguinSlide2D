@@ -5,28 +5,25 @@ using TMPro;
 
 public class ScoreCalculator : MonoBehaviour
 {
-  private float totalDistance = 0f;
-  private Vector2 previousPosition;
-  // Start is called before the first frame update
-  public GameObject player;
+  public bool isCalculating = true;
   public TMP_Text textBox;
+  public TMP_Text gameOverScore;
+  public TMP_Text gameOverDistance;
   public float totalScore = 0f;
-
-  void Start()
-  {
-    previousPosition = player.transform.position;
-  }
+  public Timer timerScript;
+  public BirdMovement birdScript;
 
   // Update is called once per frame
   void Update()
   {
-    float distanceThisFrame = Vector2.Distance(player.transform.position, previousPosition);
-    totalDistance += distanceThisFrame;
+    if (isCalculating)
+    {
 
-    totalScore = Mathf.Round(totalDistance * 1000f);
+      totalScore += ((timerScript.timeStart - timerScript.timeRemaining) * (birdScript.velocity.x));
 
-    textBox.text = totalScore.ToString();
-
-    previousPosition = player.transform.position;
+      textBox.text = totalScore.ToString("F0");
+      gameOverScore.text = totalScore.ToString("F0");
+      gameOverDistance.text = totalScore.ToString() + "M";
+    }
   }
 }

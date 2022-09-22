@@ -8,6 +8,7 @@
 		<type fullname="MainMenu" preserve="nothing"/>
 		<type fullname="PauseMenu" preserve="nothing"/>
 		<type fullname="ScoreCalculator" preserve="nothing"/>
+		<type fullname="SkyScript" preserve="nothing"/>
 		<type fullname="Timer" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Unity.TextMeshPro">

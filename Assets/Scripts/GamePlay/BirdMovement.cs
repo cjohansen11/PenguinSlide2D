@@ -65,7 +65,7 @@ public class BirdMovement : MonoBehaviour
     funcReading.Move(velocity.x * Time.deltaTime);
     height += velocity.y * Time.deltaTime;
 
-    if (Input.GetKey(KeyCode.Space) /*|| Input.touchCount > 1*/)
+    if (Input.GetKey(KeyCode.Space) || Input.touchCount > 1)
     {
       velocity.y -= downRush * Time.deltaTime;
       characterAnimation.Set(false);
@@ -108,7 +108,7 @@ public class BirdMovement : MonoBehaviour
 
     velocity.x = Mathf.Max(velocity.x, minSpeed);
 
-    float maxCameraSize = (1f / activeCamera.aspect);
+    float maxCameraSize = Mathf.Max((1f / activeCamera.aspect), 0.21f);
     activeCamera.orthographicSize = Mathf.Clamp(Mathf.Abs(height) * verticalOffsetFactor, minCameraSize, maxCameraSize);
 
     if (activeCamera.orthographicSize <= maxCameraSize - 0.001f)

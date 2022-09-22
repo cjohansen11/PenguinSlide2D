@@ -6,11 +6,9 @@
 		</type>
 		<type fullname="MainMenu">
 			<method name="PlayGame"/>
-			<method name="QuitGame"/>
 		</type>
 		<type fullname="PauseMenu">
 			<method name="LoadMenu"/>
-			<method name="RestartGame"/>
 			<method name="Resume"/>
 		</type>
 	</assembly>
