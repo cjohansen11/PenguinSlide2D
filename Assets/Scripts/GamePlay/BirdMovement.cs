@@ -34,15 +34,6 @@ public class BirdMovement : MonoBehaviour
 
   public CharacterAnimation characterAnimation;
 
-  //   SaveSystem.Score scoreData;
-
-  //   public TMP_Text heightText;
-  //   public TMP_Text speedText;
-
-  //   public TMP_Text bestHeightText;
-  //   public TMP_Text bestSpeedText;
-
-
   // Start is called before the first frame update
   void Start()
   {
@@ -118,22 +109,5 @@ public class BirdMovement : MonoBehaviour
 
 
     transform.localPosition = new Vector3(0, height, -1);
-
-    // if (scoreData.height < height)
-    // {
-    //   scoreData.height = height;
-    //   SaveSystem.Save(scoreData);
-    // }
-    // if (scoreData.speed < velocity.x)
-    // {
-    //   scoreData.speed = velocity.x;
-    //   SaveSystem.Save(scoreData);
-    // }
-
-    // heightText.text = (height).ToString();
-    // speedText.text = (velocity.x).ToString();
-
-    // bestHeightText.text = (scoreData.height * 100f).ToString();
-    // bestSpeedText.text = (scoreData.speed * 100f).ToString();
   }
 }

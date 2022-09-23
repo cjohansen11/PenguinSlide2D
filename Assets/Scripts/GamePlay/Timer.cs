@@ -32,7 +32,7 @@ public class Timer : MonoBehaviour
     if (timeRemaining > 0)
     {
       timeRemaining -= Time.deltaTime;
-      textBox.text = timeRemaining.ToString("F2");
+      textBox.text = timeRemaining.ToString("F2") + "s";
       pauseMenuTimer.text = timeRemaining.ToString("F2");
     }
     else if (timeRemaining <= 0)

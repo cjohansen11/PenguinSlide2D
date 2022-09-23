@@ -1,64 +1,28 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-
-public class SaveSystem
+public class SaveSystem : MonoBehaviour
 {
-    [System.Serializable]
-    public class Score
+  public TMP_Text highScore;
+  // Start is called before the first frame update
+  void Start()
+  {
+    float prevHighscore = PlayerPrefs.GetFloat("Highscore");
+
+    if (prevHighscore <= 0)
     {
-        public void Set(float _height, float _speed)
-        {
-            height = _height;
-            speed = _speed;
-        }
-
-        public float height = 0f;
-        public float speed = 0f;
+      highScore.text = "No score saved";
     }
-
-    static public void Save(Score scoreData)
+    else
     {
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/PenguinSlide.save";
-
-        FileStream stream = new FileStream(path, FileMode.Create);
-
-        formatter.Serialize(stream, scoreData);
-        stream.Close();
+      highScore.text = prevHighscore.ToString("F0");
     }
+  }
 
-    static public Score Load()
-    {
-        string path = Application.persistentDataPath + "/PenguinSlide.save";
-
-        if (File.Exists(path))
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
-
-            Score scoreData = formatter.Deserialize(stream) as Score;
-
-            stream.Close();
-
-            return scoreData;
-        }
-
-        return new Score();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  public void SaveScore(float highScore)
+  {
+    PlayerPrefs.SetFloat("Highscore", highScore);
+  }
 }
